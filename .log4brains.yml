@@ -1,0 +1,5 @@
+project:
+  name: example-library
+  tz: Europe/London
+  adrFolder: ./docs/adr
+  packages: []

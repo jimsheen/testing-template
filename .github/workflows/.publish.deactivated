@@ -1,0 +1,19 @@
+name: Publish Package
+on:
+  workflow_dispatch:
+
+jobs:
+  yarn-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        registry-url: https://npm.pkg.github.com
+        scope: ${{ github.repository_owner }}
+        node-version: '16.x'
+    - run: yarn
+    - run: yarn publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
